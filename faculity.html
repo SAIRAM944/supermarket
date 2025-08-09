@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Faculty Login - Booking Status</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #e6f7ff;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+
+    h2 {
+      text-align: center;
+      color: #003366;
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin: 20px 0 10px;
+    }
+
+    input[type="date"], button {
+      padding: 10px;
+      width: 100%;
+      margin-bottom: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 10px;
+      border: 1px solid #ccc;
+      text-align: left;
+    }
+
+    th {
+      background-color: #cce0ff;
+    }
+
+    .no-data {
+      text-align: center;
+      color: red;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Faculty Room Booking Viewer</h2>
+    <label for="dateSelect">Select a Date:</label>
+    <input type="date" id="dateSelect" />
+    <button onclick="showBookings()">View Bookings</button>
+
+    <div id="resultContainer"></div>
+  </div>
+
+  <script>
+    function showBookings() {
+      const selectedDate = document.getElementById("dateSelect").value;
+      const resultContainer = document.getElementById("resultContainer");
+      const data = JSON.parse(localStorage.getItem("bookingData")) || [];
+
+      resultContainer.innerHTML = ""; // Clear previous
+
+      // Check if bookingData is a single object or an array
+      const bookings = Array.isArray(data) ? data : [data];
+
+      const filtered = bookings.filter(b => b.checkin === selectedDate || b.checkout === selectedDate);
+
+      if (filtered.length === 0) {
+        resultContainer.innerHTML = `<p class="no-data">No bookings found for ${selectedDate}</p>`;
+        return;
+      }
+
+      let html = `
+        <table>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Check-in</th>
+            <th>Check-out</th>
+            <th>Guests</th>
+            <th>Room</th>
+            <th>Payment</th>
+          </tr>
+      `;
+
+      filtered.forEach(b => {
+        html += `
+          <tr>
+            <td>${b.name}</td>
+            <td>${b.email}</td>
+            <td>${b.phone}</td>
+            <td>${b.checkin}</td>
+            <td>${b.checkout}</td>
+            <td>${b.guests}</td>
+            <td>${b.room}</td>
+            <td>${b.paymentMethod || "N/A"}</td>
+          </tr>
+        `;
+      });
+
+      html += `</table>`;
+      resultContainer.innerHTML = html;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Page</title>
+    <style>
+        body {
+            background-image: url("https://png.pngtree.com/thumb_back/fw800/background/20230525/pngtree-an-empty-supermarket-on-blue-walls-has-shelves-of-products-image_2617234.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            color: red;
+            text-align: center;
+            margin-top: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            font-size: 2.5em;
+            background: linear-gradient(90deg, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0.3) 100%);
+            padding: 15px;
+            border-radius: 10px;
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        nav {
+            background-color: rgba(0, 0, 0, 0.7);
+            overflow: hidden;
+            margin-top: 30px;
+            border-radius: 10px;
+            width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav li {
+            margin: 0;
+        }
+
+        nav a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-weight: bold;
+            font-size: 1.1em;
+            position: relative;
+        }
+
+        nav a:hover {
+            background-color: green;
+            transform: translateY(-3px);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background: yellow;
+            transition: all 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 80%;
+            left: 10%;
+        }
+
+        /* Added decorative elements */
+        .decorative-corner {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-image: url('https://cdn-icons-png.flaticon.com/512/234/234618.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            opacity: 0.2;
+        }
+
+        .top-left {
+            top: 0;
+            left: 0;
+        }
+
+        .top-right {
+            top: 0;
+            right: 0;
+            transform: rotate(90deg);
+        }
+
+        .bottom-left {
+            bottom: 0;
+            left: 0;
+            transform: rotate(270deg);
+        }
+
+        .bottom-right {
+            bottom: 0;
+            right: 0;
+            transform: rotate(180deg);
+        }
+
+        /* Floating shopping cart icon */
+        .cart-icon {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background-image: url('https://cdn-icons-png.flaticon.com/512/263/263142.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            z-index: 100;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Special offers banner */
+        .offers-banner {
+            background: linear-gradient(90deg, #ff0000, #ff6600);
+            color: white;
+            text-align: center;
+            padding: 10px;
+            font-weight: bold;
+            margin-top: 20px;
+            animation: blink 2s infinite;
+            border-radius: 5px;
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        @keyframes blink {
+            0% { opacity: 0.7; }
+            50% { opacity: 1; }
+            100% { opacity: 0.7; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Decorative corner elements -->
+    <div class="decorative-corner top-left"></div>
+    <div class="decorative-corner top-right"></div>
+    <div class="decorative-corner bottom-left"></div>
+    <div class="decorative-corner bottom-right"></div>
+
+    <!-- Floating cart icon -->
+    <div class="cart-icon" onclick="window.open('./addcart.html', '_blank')"></div>
+
+    <h1>Welcome to Supermarket</h1>
+
+    <!-- Special offers banner -->
+    <div class="offers-banner">
+        🎉 Special Discounts Today Only! Up to 50% Off Selected Items! 🎉
+    </div>
+
+    <nav>
+        <ul>
+            <li><a href="file:///C:/Users/himas/OneDrive/Desktop/supermarket%20website/grocery.html" target="_blank">Grocery</a></li>
+            <li><a href="./cooldrinks.html" target="_blank">Cool Drinks</a></li>
+            <li><a href="./laptops.html" target="_blank">Laptops</a></li>
+            <li><a href="./addcart.html" target="_blank">Add to Cart</a></li>
+            <li><a href="./paymentpage.html" target="_blank">Payment Page</a></li>
+        </ul>
+    </nav>
+
+    <!-- Animated background elements -->
+    <div style="position: fixed; bottom: 0; width: 100%; text-align: center; color: white; background: rgba(0,0,0,0.5); padding: 10px;">
+        🛒 Happy Shopping! Visit us daily for amazing deals! 🛒
+    </div>
+
+</body>
+</html>
